@@ -1,0 +1,11 @@
+GO_ID,Term,Annotated,Significant,Expected,fisher
+GO:0016310,phosphorylation,161,7,4.63,0.016
+GO:0030705,cytoskeleton-dependent intracellular tra...,9,2,0.26,0.017
+GO:0010517,regulation of phospholipase activity,10,2,0.29,0.017
+GO:0010466,negative regulation of peptidase activit...,13,2,0.37,0.017
+GO:0050869,negative regulation of B cell activation,1,1,0.03,0.018
+GO:0001830,trophectodermal cell fate commitment,1,1,0.03,0.018
+GO:0042245,RNA repair,1,1,0.03,0.018
+GO:0051585,negative regulation of dopamine uptake i...,1,1,0.03,0.018
+GO:0002408,myeloid dendritic cell chemotaxis,1,1,0.03,0.018
+GO:0007529,establishment of synaptic specificity at...,1,1,0.03,0.018

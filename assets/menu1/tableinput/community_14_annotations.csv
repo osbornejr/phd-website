@@ -1,0 +1,11 @@
+GO_ID,Term,Annotated,Significant,Expected,fisher
+GO:0008150,biological_process,1329,165,232.07,3.8e-05
+GO:0006511,ubiquitin-dependent protein catabolic pr...,36,10,6.29,0.00022
+GO:0072659,protein localization to plasma membrane,7,4,1.22,0.00070
+GO:0007218,neuropeptide signaling pathway,13,5,2.27,0.00384
+GO:0007267,cell-cell signaling,126,18,22.0,0.00437
+GO:0007166,cell surface receptor signaling pathway,215,28,37.54,0.00693
+GO:0071108,protein K48-linked deubiquitination,2,2,0.35,0.00796
+GO:0042572,retinol metabolic process,2,2,0.35,0.00796
+GO:0045672,positive regulation of osteoclast differ...,2,2,0.35,0.00796
+GO:0030422,production of siRNA involved in RNA inte...,2,2,0.35,0.00796
