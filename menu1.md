@@ -18,8 +18,32 @@ After cut:
 
 ## Network construction
 
+\begin{showhtml}{}
+```julia
+using WGLMakie,JSServe,Markdown,Graphs,GraphMakie,NetworkLayout
+Page(exportable=true,offline=true)
+WGLMakie.activate!()
+scatter(1:4,color=1:4)
+g = wheel_graph(20)
+#vertex_colors = replace(vertexlist,"noncoding"=>:red,"coding"=>:blue);
 
-![image](/assets/menu1/network.svg)
+begin
+	set_theme!(backgroundcolor=:grey)
+	fig,scene,p = graphplot(g;
+		layout=Spring(dim=3,C=1.0),
+		#node_color = vertex_colors,
+		node_size = 5,
+		edge_color = :grey,
+		edge_width = 0.1,
+		figure = (resolution = (1500, 800),)
+	)
+	scene.show_axis =false
+	fig
+end
+
+```
+\end{showhtml}
+
 
 ## Network analysis
 

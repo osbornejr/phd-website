@@ -1,16 +1,94 @@
-function hfun_bar(vname)
-  val = Meta.parse(vname[1])
-  return round(sqrt(val), digits=2)
+using FranklinUtils
+
+function env_showhtml(com, _)
+    content = Franklin.content(com)
+    lang, ex_name, code = Franklin.parse_fenced_block(content, false)
+    name = "example_$(hash(code))"
+    str = """
+    ```julia:$name
+    __result = begin # hide
+        $code
+    end # hide
+    println("~~~") # hide
+    show(stdout, MIME"text/html"(), __result) # hide
+    println("~~~") # hide
+    nothing # hide
+    ```
+    \\textoutput{$name}
+    """
+    return str
 end
 
-function hfun_m1fill(vname)
-  var = vname[1]
-  return pagevar("index", var)
+
+@env function box(md; title="", color="purple")
+    return html("""
+        <div class="grid-item col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 mb-2">
+          <div class="content-box $color-box">
+            <h2>$title</h2>
+        """) * md * html("""
+          </div>
+          <div class="u-vskip-2"></div>
+        </div>
+        """)
 end
 
-function lx_baz(com, _)
-  # keep this first line
-  brace_content = Franklin.content(com.braces[1]) # input string
-  # do whatever you want here
-  return uppercase(brace_content)
+@lx function avatar(; link="", img="", name="", affil="")
+    return html("""
+        <div class="u-vskip-3"></div>
+        <div class="header-talks avatar-talks">
+          <a href="$link">
+            <img class="avatar-circle-talks" src="$img">
+          </a>
+          <div class="speaker-talks">
+            <a href="$link" style="text-decoration:none;">$name</a>
+            <p class="affiliation">
+              $affil
+            </p>
+          </div>
+        </div>
+        <div class="u-vskip-2"></div>
+        """)
+end
+
+# NAV_YEAR tools
+
+curyear() = parse(Int, match(r"^[\/|\\]?(20\d{2})[\/||\\]", locvar(:fd_rpath)::String).captures[1])
+
+function hfun_curyear()
+    return "$(curyear())"
+end
+
+function hfun_previous_editions()
+    year = curyear()
+    pre_years = year-1:-1:2014
+    io = IOBuffer()
+    for (i, y) in enumerate(pre_years)
+        write(io, """<a href="/$y/">$y</a>""")
+        i == length(pre_years) || write(io, "/")
+    end
+    prevs = String(take!(io))
+    return """
+        <div class="u-futura u-uppercase previous-editions-menu" style="margin:auto">
+          Previously: $prevs
+        </div>
+        """
+end
+
+@env function centered(md; title="Gold")
+    return html("""
+        <h2 align="center">$title</h2>
+        <div class="d-flex flex-wrap justify-content-center align-items-center">
+        """) * md * html("""
+        </div>
+        """)
+end
+
+@lx function sponsor(; link="", img="", name="", level=1)
+    return html("""
+            <div class="p-4">
+              <a href="$link">
+              <img src="$img" alt="$name"  class="sponsors_img_l$level"/>
+              </a>
+            </div>
+            """)
 end
