@@ -32,7 +32,7 @@ website_descr = "outlining results of network construction and analysis."
 website_url   = "https://tlienart.github.io/FranklinTemplates.jl/"
 +++
 
-@def prepath = "heterogeneous-graphlet-counting"
+@def prepath = "phd-website"
 <!--
 Add here global latex commands to use throughout your pages.
 -->
